@@ -1,4 +1,4 @@
-package com.subin.goozzu;
+package io.github.lslight.goozzu;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
