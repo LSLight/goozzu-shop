@@ -1,4 +1,4 @@
-package com.subin.goozzu;
+package io.github.lslight.goozzu;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
