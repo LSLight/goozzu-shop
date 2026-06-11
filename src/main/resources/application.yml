@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: goozzu
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/goozzu?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: email, profile
+          kakao:
+            client-id: ${KAKAO_CLIENT_ID}
+            client-secret: ${KAKAO_CLIENT_SECRET}
+            client-authentication-method: client_secret_post
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/kakao"
+            scope: profile_nickname, account_email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-expiry: 3600000       # 60분 (ms)
+  refresh-token-expiry: 1209600000   # 14일 (ms)
+
+aws:
+  region: ap-northeast-2
+  s3:
+    bucket: ${S3_BUCKET_NAME}
+    presigned-url-expiry: 86400       # 24시간 (초)
+  credentials:
+    access-key: ${AWS_ACCESS_KEY}
+    secret-key: ${AWS_SECRET_KEY}
+
+toss:
+  payments:
+    secret-key: ${TOSS_SECRET_KEY}
+    confirm-url: https://api.tosspayments.com/v1/payments/confirm
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
