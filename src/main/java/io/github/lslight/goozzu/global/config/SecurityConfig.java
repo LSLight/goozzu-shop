@@ -15,7 +15,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
+// @RequiredArgsConstructor 추후 필요할 때 주석 해제
 public class SecurityConfig {
 
     @Bean
